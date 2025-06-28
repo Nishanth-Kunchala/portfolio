@@ -1,21 +1,40 @@
+import { useRef } from 'react';
+
+const projects = [
+  { title: 'Project 1', description: 'Description 1' },
+  { title: 'Project 2', description: 'Description 2' },
+  { title: 'Project 3', description: 'Description 3' },
+  { title: 'Project 4', description: 'Description 4' },
+];
+
 export default function Projects() {
-    return (
-      <section>
-        <h2>Projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <h3>Vision-Based Docking System</h3>
-            <p>Developed an AI-based keypoint detector for spacecraft refueling ports, fusing model outputs with AprilTag and LiDAR data across two Kalman Filter stages.</p>
-          </div>
-          <div class="project-card">
-            <h3>Rocket Avionics Platform</h3>
-            <p>Designed and tested a modular avionics stack using an ESP32, including telemetry, IMU-based orientation tracking, and real-time flight event control.</p>
-          </div>
-          <div class="project-card">
-            <h3>ISS Docking Keypoint Tracker</h3>
-            <p>Trained a MobileNetV3 model to predict ISS docking port keypoints from 2D images using soft heatmaps and KL divergence loss for precision alignment.</p>
-          </div>
+  const carouselRef = useRef(null);
+
+  const scroll = (direction) => {
+    const scrollAmount = 320;
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section>
+      <h2>Projects</h2>
+      <div className="carousel-wrapper">
+        <button className="scroll-button left" onClick={() => scroll('left')}>⬅</button>
+        <div className="carousel" ref={carouselRef}>
+          {projects.map((project, index) => (
+            <div key={index} className="carousel-card">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    );
-  }
+        <button className="scroll-button right" onClick={() => scroll('right')}>⮕</button>
+      </div>
+    </section>
+  );
+}

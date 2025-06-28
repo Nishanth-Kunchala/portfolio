@@ -234,3 +234,66 @@ html {
   line-height: 1.6;
   color: #444;
 }
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.carousel {
+  display: flex;
+  gap: 50px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 50px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-card {
+  flex: 0 0 360px; 
+  height: 360px;
+  scroll-snap-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-card:hover {
+  transform: scale(1.25);
+}
+
+.scroll-button {
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 3px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.scroll-button:hover {
+  background-color: #004c99;
+}
+
+.scroll-button.left {
+  margin-right: 10px;
+}
+
+.scroll-button.right {
+  margin-left: 10px;
+}
