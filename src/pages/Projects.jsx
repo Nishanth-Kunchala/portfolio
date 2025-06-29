@@ -2,10 +2,21 @@ import { useRef, useState, useEffect } from 'react';
 import './Projects.css';
 
 const projects = [
-  { title: 'Project 1', description: 'A full-stack app with React and Node', details: 'Here is more info about Project 1.' },
-  { title: 'Project 2', description: 'An ML pipeline for classification', details: 'Here is more info about Project 2.' },
-  { title: 'Project 3', description: 'A portfolio website', details: 'Here is more info about Project 3.' },
-  { title: 'Project 4', description: 'A mobile app for task tracking', details: 'Here is more info about Project 4.' },
+  { title: 'Autonomous cryogenic coupler for in orbit fuel transfer', 
+  description: 'Awarded "best prototype" in NASA\'s 2025 Human Lander Challenge Conference, I worked on robotics, computer vision and CFD validation', 
+  details: '' },
+
+  { title: 'NASA internship at Glenn Research Center', 
+  description: 'Aircraft design and optimization via NASA\'s Aviary', 
+  details: 'Here is more info about Project 2.' },
+
+  { title: 'Research in drone-based wildfire detection', 
+  description: 'I currently work in Dr. Kumar\'s lab at The Ohio State University to implement a U-Net AI model into drone-based wildfire detection', 
+  details: 'Here is more info about Project 3.' },
+
+  { title: 'Buckeye Space Launch Initiative', 
+  description: 'I currently work on the implementation of an airbrakes system to be used in controlling rocket apogee for the 30,000 ft. category in the IREC 2022-2025 competitions', 
+  details: 'Here is more info about Project 4.' },
 ];
 
 export default function Projects() {
@@ -60,7 +71,8 @@ export default function Projects() {
 
   return (
     <section>
-      <h2>Projects</h2>
+      <h2>Projects and Experience</h2>
+      <p1>Click each card to learn more</p1>
       <div className="carousel-wrapper">
         {canScrollLeft && (
           <button className="scroll-button left" onClick={() => scroll('left')}>⬅</button>
@@ -84,7 +96,34 @@ export default function Projects() {
         )}
       </div>
 
-      {selectedIndex !== null && (
+      {selectedIndex == 0 && (
+        <div className={`project-modal ${fadeOut ? 'fade-out' : ''}`}>
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModal}>×</button>
+            <h1>{projects[selectedIndex].title}</h1>
+            <p>{projects[selectedIndex].details}</p>
+
+            <img
+              src="/headshot.jpg"
+              alt="Project Screenshot"
+              className="modal-image"
+            />
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              facilisis velit at justo faucibus, sed fermentum libero gravida.
+              Vivamus ut nisi nec massa tincidunt pharetra at nec risus.
+            </p>
+
+            <div className="modal-links">
+              <a href="#" target="_blank" rel="noopener noreferrer">🔗 Live Demo</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">💻 GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedIndex == 1 && (
         <div className={`project-modal ${fadeOut ? 'fade-out' : ''}`}>
           <div className="modal-content">
             <button className="close-button" onClick={closeModal}>×</button>
@@ -92,7 +131,61 @@ export default function Projects() {
             <p>{projects[selectedIndex].details}</p>
 
             <img
-              src="https://via.placeholder.com/600x300"
+              src="/headshot.jpg"
+              alt="Project Screenshot"
+              className="modal-image"
+            />
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              facilisis velit at justo faucibus, sed fermentum libero gravida.
+              Vivamus ut nisi nec massa tincidunt pharetra at nec risus.
+            </p>
+
+            <div className="modal-links">
+              <a href="#" target="_blank" rel="noopener noreferrer">🔗 Live Demo</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">💻 GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedIndex == 2 && (
+        <div className={`project-modal ${fadeOut ? 'fade-out' : ''}`}>
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModal}>×</button>
+            <h2>{projects[selectedIndex].title}</h2>
+            <p>{projects[selectedIndex].details}</p>
+
+            <img
+              src="/headshot.jpg"
+              alt="Project Screenshot"
+              className="modal-image"
+            />
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              facilisis velit at justo faucibus, sed fermentum libero gravida.
+              Vivamus ut nisi nec massa tincidunt pharetra at nec risus.
+            </p>
+
+            <div className="modal-links">
+              <a href="#" target="_blank" rel="noopener noreferrer">🔗 Live Demo</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">💻 GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {selectedIndex == 3 && (
+        <div className={`project-modal ${fadeOut ? 'fade-out' : ''}`}>
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModal}>×</button>
+            <h2>{projects[selectedIndex].title}</h2>
+            <p>{projects[selectedIndex].details}</p>
+
+            <img
+              src="/headshot.jpg"
               alt="Project Screenshot"
               className="modal-image"
             />
