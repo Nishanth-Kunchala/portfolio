@@ -275,25 +275,134 @@ html {
 }
 
 .scroll-button {
-  background-color: #001f3f;
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 3px 10px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  z-index: 0;
-  transition: background 0.3s ease;
+  border: none;
+  background-color: #001f3f; /* or any brand color */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .scroll-button:hover {
-  background-color: #004c99;
+  background-color: #004080;
+  transform: scale(1.1);
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding-left: calc(50% - 160px); 
+  padding-right: calc(50% - 160px);
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .scroll-button.left {
-  margin-right: 10px;
+  position: absolute;
+  left: -20px;
 }
 
 .scroll-button.right {
-  margin-left: 10px;
+  position: absolute;
+  right: -20px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding-left: calc(50% - 160px);
+  padding-right: calc(50% - 160px);
+}
+
+.carousel-card {
+  flex: 0 0 320px;
+  scroll-snap-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 15, 30, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.8) rotate(-2deg);
+  animation: expandTwist 0.4s ease forwards;
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+}
+
+@keyframes expandTwist {
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 15, 30, 0.75);
+  }
 }
