@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
-import Projects from './pages/Projects';
+import Projects from './pages/Portfolio';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 
@@ -25,7 +25,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/projects"
+          path="/portfolio"
           element={
             <PageFade>
               <Projects />

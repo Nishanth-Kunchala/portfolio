@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import './Projects.css';
+import './portfolio.css';
 
 const projects = [
   { title: 'Autonomous cryogenic coupler for in orbit fuel transfer', 
