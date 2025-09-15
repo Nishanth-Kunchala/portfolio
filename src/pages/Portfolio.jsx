@@ -7,16 +7,16 @@ const projects = [
   details: '' },
 
   { title: 'NASA internship at Glenn Research Center', 
-  description: 'Aircraft design and optimization via NASA\'s Aviary', 
-  details: 'Here is more info about Project 2.' },
+  description: 'During my internship at GRC, I contributed to extending Aviary: NASA’s open-source aircraft and mission design and optimization software, by enhancing its capabilities to support small-scale UAVs.', 
+  details: '' },
 
   { title: 'Research in drone-based wildfire detection', 
-  description: 'I currently work in Dr. Kumar\'s lab at The Ohio State University to implement a U-Net AI model into drone-based wildfire detection', 
-  details: 'Here is more info about Project 3.' },
+  description: 'I currently work in Dr. Kumar\'s lab at The Ohio State University to implement a U-Net AI model into drone-based wildfire detection, as well as creating novel preprocessing methods to increase dataset size.', 
+  details: '' },
 
   { title: 'Buckeye Space Launch Initiative', 
   description: 'I currently work on the implementation of an airbrakes system to be used in controlling rocket apogee for the 30,000 ft. category in the IREC 2022-2025 competitions', 
-  details: 'Here is more info about Project 4.' },
+  details: '' },
 ];
 
 export default function Projects() {
@@ -103,10 +103,15 @@ export default function Projects() {
             <h1>{projects[selectedIndex].title}</h1>
             <p>{projects[selectedIndex].details}</p>
 
-            <img
-              src="/headshot.jpg"
-              alt="Project Screenshot"
+            <video
+              src="/Coupling_Video.mp4"
               className="modal-image"
+              controls
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
+
             />
 
             <p>
@@ -131,9 +136,10 @@ export default function Projects() {
             <p>{projects[selectedIndex].details}</p>
 
             <img
-              src="/headshot.jpg"
+              src="/aviary_concept.webp"
               alt="Project Screenshot"
               className="modal-image"
+              style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
             />
 
             <p>
@@ -158,9 +164,10 @@ export default function Projects() {
             <p>{projects[selectedIndex].details}</p>
 
             <img
-              src="/headshot.jpg"
+              src="/caccpda.png"
               alt="Project Screenshot"
               className="modal-image"
+              style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
             />
 
             <p>
@@ -185,9 +192,10 @@ export default function Projects() {
             <p>{projects[selectedIndex].details}</p>
 
             <img
-              src="/headshot.jpg"
+              src="/airbrakes.png"
               alt="Project Screenshot"
               className="modal-image"
+              style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
             />
 
             <p>

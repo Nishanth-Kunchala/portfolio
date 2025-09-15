@@ -2,9 +2,10 @@ export default function Home() {
   return (
     <section className="hero">
       <img
-        src="/headshot.jpg"
+        src="/banner.jpg"
         alt="Nishanth Kunchala"
-        className="headshot"
+        className="banner"
+        style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
       />
       <div className="intro">
         <h1>Hi, I’m Nishanth Kunchala!</h1>
