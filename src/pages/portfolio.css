@@ -12,8 +12,8 @@
     gap: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-left: calc(50% - 160px); 
-    padding-right: calc(50% - 160px);
+    padding-left: calc(60% - 160px); 
+    padding-right: calc(60% - 160px);
     scrollbar-width: none; /* Firefox */
   }
   
