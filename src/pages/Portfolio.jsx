@@ -3,29 +3,32 @@ import './portfolio.css';
 
 const projects = [
   { 
-    title: 'Autonomous coupler for in orbit cryo-fuel transfer', 
+    title: 'Autonomous in Orbit Cryogenic Fuel Coupler', 
     description: 'Awarded "best prototype" in NASA\'s 2025 Human Lander Challenge Conference, I worked on robotics, computer vision and CFD validation', 
     details: 'Here, you can see the CAD of the latching mechanism, as well as a live demo of the autonomous tracking:',
     media: [
-      { type: 'image', src: '/coupler_cad.png' },
-      { type: 'video', src: '/Coupling_Video.mp4' }
+      { type: 'image', src: '/coupler_cad.png', caption: 'CAD model of the coupler' },
+      { type: 'video', src: '/Coupling_Video.mp4', caption: 'CAD model of the coupler' },
+      { type: 'video', src: '/hulc_live_demo.mp4', caption: 'CAD model of the coupler' }
     ]
   },
   { 
-    title: 'NASA internship at Glenn Research Center', 
+    title: 'NASA Internship at Glenn Research Center', 
     description: 'During my internship at GRC, I contributed to extending Aviary...', 
     details: 'Here, you can learn more about the work I did:',
     media: [
-      { type: 'image', src: '/aviary_concept.webp' },
-      { type: 'image', src: '/aviary_ui.png' }
+      { type: 'image', src: '/aviary_concept.webp', caption: 'CAD model of the coupler' },
+      { type: 'image', src: '/aviary_concept.webp', caption: 'CAD model of the coupler' },
     ]
   },
   {
-    title: 'Research in drone-based wildfire detection',
+    title: 'Research in Drone-Based Wildfire Detection',
     description: 'I currently work in Dr. Kumar\'s lab at OSU...',
     details: 'Here, you can leanprn about our AI model and preprocessing techniques:',
     media: [
-      { type: 'image', src: '/caccpda.png' }
+      { type: 'image', src: '/caccpda.png', caption: 'CAD model of the coupler' },
+      { type: 'image', src: '/caccpda.png', caption: 'CAD model of the coupler' },
+      { type: 'image', src: '/caccpda_results.png', caption: 'CAD model of the coupler' },
     ]
   },
   {
@@ -33,8 +36,8 @@ const projects = [
     description: 'I currently work on the implementation of an airbrakes system...',
     details: 'Here, you can learn about how our mechanism functions:',
     media: [
-      { type: 'image', src: '/airbrakes.png' },
-      { type: 'video', src: '/airbrakes_demo.mp4' }
+      { type: 'image', src: '/airbrakes.png', caption: 'CAD model of the coupler' },
+      { type: 'video', src: '/airbrakes_movement.mov', caption: 'CAD model of the coupler' },
     ]
   }
 ];
@@ -96,31 +99,32 @@ export default function Projects() {
           >
             <button className="close-button" onClick={closeModal}>×</button>
             
-            <h2>{selectedProject.title}</h2>
+            <h1>{selectedProject.title}</h1>
             <p>{selectedProject.description}</p>
             <p>{selectedProject.details}</p>
 
             {/* Multiple media support */}
             <div className="modal-media">
-              {selectedProject.media.map((item, i) => (
-                item.type === 'video' ? (
-                  <video
-                    key={i}
-                    src={item.src}
-                    controls
-                    autoPlay
-                    loop
-                    muted
-                    className="modal-image"
-                  />
-                ) : (
-                  <img
-                    key={i}
-                    src={item.src}
-                    alt={`Media ${i + 1}`}
-                    className="modal-image"
-                  />
-                )
+              {selectedProject.media.slice(1).map((item, i) => (
+                <div key={i} className="media-block">
+                  {item.type === 'video' ? (
+                    <video
+                      src={item.src}
+                      controls
+                      autoPlay
+                      loop
+                      muted
+                      className={`modal-image ${item.src.includes('hulc_live_demo') ? 'small-video' : ''}`}
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={`Media ${i + 1}`}
+                      className="modal-image"
+                    />
+                  )}
+                  {item.caption && <p className="media-caption">{item.caption}</p>}
+                </div>
               ))}
             </div>
 
