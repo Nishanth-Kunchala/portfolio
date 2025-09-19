@@ -22,6 +22,17 @@ const projects = [
     ]
   },
   {
+    title: 'Avionics at the Buckeye Space Launch Initiative',
+    description: 'I currently work on the implementation of an airbrakes system for implementation in a 12 foot supersonic SRAD rocket.',
+    details: 'Our current airbrakes design features a rack and pinion system, moving 2 sets of blades upon linear rails, and a servo motor powering the whole mechanism.',
+    media: [
+      { type: 'image', src: '/airbrakes.png', caption: '' },
+      { type: 'video', src: '/airbrakes_movement.mov', caption: 'Above, you can see the CAD for our most recent airbrakes design.' },
+      { type: 'image', src: '/first_airbrakes.jpg', caption: 'Above is the first prototype of the airbrakes that we made. It had really bad issues with friction along the sides and bottom face of the blade, and didn\'t produce a lot of drag.' },
+      { type: 'image', src: '/second_airbrakes.jpg', caption: 'Above is the second iteration of our airbrakes. We made the decision to move to 2 blades, and linear rails, which got rid of the issues with the blade friction, as well as gave us more drag, but now we had issues with friction between the joints in the linkages.' },
+    ]
+  },
+  {
     title: 'Research in Drone-Based Wildfire Detection',
     description: 'I currently work in Dr. Kumar\'s lab at OSU...',
     details: 'Here, you can leanprn about our AI model and preprocessing techniques:',
@@ -32,14 +43,16 @@ const projects = [
     ]
   },
   {
-    title: 'Avionics at the Buckeye Space Launch Initiative',
-    description: 'I currently work on the implementation of an airbrakes system...',
-    details: 'Here, you can learn about how our mechanism functions:',
+    title: 'Airfoil Design Project at The Ohio State University',
+    description: 'For one of my classes, we were tasked with creating an airfoil shape, optimized for maximum stall angle.',
+    details: 'I started with a NACA 0012 airfoil, and then started adjusting its camber line, and then the t/c ratio. I used XFLR5 for the design and simulation, followed by testing in a small-scale subsonic wind tunnel.',
     media: [
-      { type: 'image', src: '/airbrakes.png', caption: 'CAD model of the coupler' },
-      { type: 'video', src: '/airbrakes_movement.mov', caption: 'CAD model of the coupler' },
+      { type: 'image', src: '/airfoil_thumbnail.jpg', caption: '' },
+      { type: 'image', src: '/airfoil_cad.jpg', caption: 'Above, you can see the CAD for my final airfoil design' },
+      { type: 'image', src: '/airfoil_print.jpg', caption: 'Above, you can see the scaled down, 3D printed model of the designed airfoil. This was my first time using a 3D printer, and honestly, I had to reprint at least 3 times, because I kept messing up the sizing of the airfoil, and it wasnt fitting in my test setup.' },
+      { type: 'image', src: '/airfoil_test_setup.jpg', caption: 'Above, you can see the setup used for testing the stall angle of the airfoil. Using tufts attached across various points on the airfoils surface, I slowly adjusted the angle of attack until i visibly saw the flow transition from laminar to turbulent, indicating flow detachment.' },
     ]
-  }
+  },
 ];
 
 export default function Projects() {
@@ -126,11 +139,6 @@ export default function Projects() {
                   {item.caption && <p className="media-caption">{item.caption}</p>}
                 </div>
               ))}
-            </div>
-
-            <div className="modal-links">
-              <a href="#" target="_blank" rel="noopener noreferrer">🔗 Live Demo</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">💻 GitHub Repo</a>
             </div>
           </div>
         </div>
