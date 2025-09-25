@@ -1,5 +1,4 @@
 {
-  "homepage": "https://nishanth-kunchala.github.io/portfolio/",
   "name": "portfolio-react",
   "private": true,
   "version": "0.0.0",
@@ -11,6 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://nishanth-kunchala.github.io/portfolio/",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "framer-motion": "^12.19.2",
