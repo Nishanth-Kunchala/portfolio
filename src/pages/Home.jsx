@@ -1,8 +1,13 @@
+import hikingImage from '../assets/hiking.jpg'
+import rockClimbing from '../assets/rock_climbing.mov'
+import bannerImage from '../assets/banner.jpg'
+import benchPr from '../assets/bench_pr.mov'
+
 export default function Home() {
   return (
     <section className="hero">
       <img
-        src="/banner.jpg"
+        src={bannerImage}
         alt="Nishanth Kunchala"
         className="banner"
         style={{ maxWidth: '600px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
@@ -47,7 +52,7 @@ export default function Home() {
           }}
         >
           <video
-            src="/bench_pr.mov"
+            src={benchPr}
             controls
             autoPlay
             loop
@@ -76,7 +81,7 @@ export default function Home() {
           }}
         >
           <img
-            src="../assets/hiking.jpg"
+            src={hikingImage}
             alt="Hiking"
             style={{
               width: '100%',
@@ -96,7 +101,7 @@ export default function Home() {
           }}
         >
           <video
-            src="/rock_climbing.mov"
+            src={rockClimbing}
             controls
             autoPlay
             loop
