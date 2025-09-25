@@ -76,7 +76,7 @@ export default function Home() {
           }}
         >
           <img
-            src="/hiking.jpg"
+            src="../assets/hiking.jpg"
             alt="Hiking"
             style={{
               width: '100%',
