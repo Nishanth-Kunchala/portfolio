@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom'; 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 
@@ -67,13 +67,14 @@ function PageFade({ children }) {
 }
 
 export default function App() {
+  // App now serves as the main content/layout wrapper *inside* the single top-level Router.
   return (
-    <Router>
+    <>
       <Header />
       <main>
         <AnimatedRoutes />
       </main>
       <Footer />
-    </Router>
+    </>
   );
 }
