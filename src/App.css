@@ -1,4 +1,105 @@
+/* App.css */
 
+/* 1. Global Reset: Eliminate default body margin/padding */
+body {
+  margin: 0;
+  padding: 0;
+  /* Optional: Use a reliable box-sizing model */
+  box-sizing: border-box; 
+  /* Set a smooth scrolling behavior */
+  scroll-behavior: smooth;
+}
+
+/* 2. Prevent Horizontal Scrolling/Overflow on the root elements */
+html, body {
+  /* Critical for mobile: prevents any element from forcing a horizontal scroll */
+  overflow-x: hidden; 
+}
+
+/* 3. Ensure Header/Footer take up the full available width */
+/* 1. Default (Desktop/Wider Screens) - Header Layout */
+header, footer {
+  display: flex;
+  /* Centers the H1 and NAV horizontally */
+  justify-content: center; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  padding: 10px 20px;
+  /* Ensure your background color is defined here */
+  /* background-color: blue; */ 
+}
+
+/* 2. Media Query (Mobile/Small Screens) - Alignment Change */
+@media (max-width: 600px) {
+  header {
+      /* Stacks H1 and NAV vertically */
+      flex-direction: column;
+      
+      /* Aligns all stacked items (H1 and NAV) to the LEFT */
+      align-items: flex-start; 
+  }
+
+  /* Ensures the name and nav take up full width for consistent left-alignment */
+  header h1, 
+  header nav {
+      width: 100%;
+      text-align: left;
+  }
+  
+    /* Target the list of links (<ul>) */
+  header nav ul {
+    padding: 0; 
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap; /* 🔑 CRITICAL: Prevents the list items from wrapping */
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  /* 🔑 NEW: Target the links (<a> tags inside <li>) to shrink the text */
+  header nav ul li a {
+      font-size: 0.9rem; /* Adjust this value (e.g., 0.8rem or 0.9rem) */
+      padding: 5px; /* Adjust padding if needed after shrinking text */
+  }
+}
+
+/* App.css - Desktop Styles (Horizontal) */
+.media-gallery {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  margin: 0;
+}
+
+/* App.css - Mobile Styles (Vertical Stacking) */
+@media (max-width: 600px) {
+  .media-gallery {
+      flex-direction: column; /* Stacks items */
+      align-items: center; /* Centers items in the stack */
+      padding: 0 10px; 
+  }
+
+  .media-gallery > div {
+      flex: 1 1 100% !important; 
+      max-width: 100% !important;
+      height: auto !important; /* Removes 500px height */
+      margin-bottom: 20px; 
+  }
+  
+  .media-gallery video, 
+  .media-gallery img {
+      height: auto !important; /* Resets media height to auto */
+      max-height: none !important; 
+  }
+}
+
+/* App.css (Optional addition for safety) */
+.hero, main {
+  box-sizing: border-box;
+}
 Reset
 * {
   margin: 0;
@@ -27,7 +128,7 @@ body {
 main {
   flex: 1 0 auto;
   padding: 40px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   min-height: 81vh;

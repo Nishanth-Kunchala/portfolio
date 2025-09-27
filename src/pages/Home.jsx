@@ -1,4 +1,4 @@
-import hikingImage from '../assets/hiking.jpg'
+import hikingImage from '../assets/hiking_better.jpg'
 import rockClimbing from '../assets/rock_climbing.mov'
 import bannerImage from '../assets/banner.jpg'
 import benchPr from '../assets/bench_pr.mov'
@@ -33,90 +33,92 @@ export default function Home() {
           and bake in my free time, and I love eating even more.
         </p>
       </div>
+
       <div
+    // 🔑 CORRECTION: We removed the inline 'display: flex', 'gap', etc. 
+    // and replaced them with the CSS class.
+    className="media-gallery" 
+  >
+    {/* First video */}
+    <div
+      style={{
+        flex: '1 1 30%',
+        maxWidth: '400px',
+        // 🔑 Forces the height for desktop/tablet layout
+        height: '500px', 
+        boxSizing: 'border-box',
+      }}
+    >
+      <video
+        src={benchPr}
+        controls
+        autoPlay
+        loop
+        muted
         style={{
-          display: 'flex',
-          gap: '10px',
-          justifyContent: 'center',
-          alignItems: 'center',   // vertically centers everything
-          flexWrap: 'wrap',
-          margin: '0 0',
+          width: '100%',
+          // 🔑 Forces the video to fill the 500px container
+          height: '100%', 
+          display: 'block',
+          borderRadius: '8px',
+          objectFit: 'cover',
         }}
-      >
-        {/* First video */}
-        <div
-          style={{
-            flex: '1 1 30%',
-            maxWidth: '400px',
-            boxSizing: 'border-box',
-          }}
-        >
-          <video
-            src={benchPr}
-            controls
-            autoPlay
-            loop
-            muted
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '500px',
-              display: 'block',
-              borderRadius: '8px',
-              objectFit: 'cover',
-            }}
-          />
-        </div>
+      />
+    </div>
 
-        {/* Image in the middle */}
-        <div
-          style={{
-            flex: '1 1 30%',
-            maxWidth: '400px',
-            boxSizing: 'border-box',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '500px',   // lock parent height to match videos
-          }}
-        >
-          <img
-            src={hikingImage}
-            alt="Hiking"
-            style={{
-              width: '100%',
-              height: '100%',     // fill parent height
-              borderRadius: '8px',
-              objectFit: 'cover', // crop nicely instead of stretching
-            }}
-          />
-        </div>
+    {/* Image in the middle */}
+    <div
+      style={{
+        flex: '1 1 30%',
+        maxWidth: '400px',
+        // 🔑 Forces the height for desktop/tablet layout
+        height: '500px', 
+        boxSizing: 'border-box',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <img
+        src={hikingImage}
+        alt="Hiking"
+        style={{
+          width: '100%',
+          // 🔑 Fills the 500px height of the parent
+          height: '100%',     
+          borderRadius: '8px',
+          objectFit: 'cover',
+        }}
+      />
+    </div>
 
-        {/* Second video */}
-        <div
-          style={{
-            flex: '1 1 30%',
-            maxWidth: '400px',
-            boxSizing: 'border-box',
-          }}
-        >
-          <video
-            src={rockClimbing}
-            controls
-            autoPlay
-            loop
-            muted
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '500px',
-              display: 'block',
-              borderRadius: '8px',
-              objectFit: 'cover',
-            }}
-          />
-        </div>
-      </div>
+    {/* Second video */}
+    <div
+      style={{
+        flex: '1 1 30%',
+        // 🔑 Forces the height for desktop/tablet layout
+        height: '500px',
+        maxWidth: '400px',
+        boxSizing: 'border-box',
+      }}
+    >
+      <video
+        src={rockClimbing}
+        controls
+        autoPlay
+        loop
+        muted
+        style={{
+          width: '100%',
+          // 🔑 Forces the video to fill the 500px container
+          height: '100%', 
+          display: 'block',
+          borderRadius: '8px',
+          objectFit: 'cover',
+        }}
+      />
+    </div>
+  </div>
 
     </section>
   );
