@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         <p style={{ margin: '0 0 0 0' }}>
         Beyond engineering, I’m an Eagle Scout with a strong foundation in leadership, discipline, and teamwork, which I bring to every project and collaboration. 
-        I thrive in challenging environments where I can merge my software skills and aerospace knowledge to innovate solutions for next-generation space missions.
+        I thrive in challenging environments where I can merge my software skills(<a href="https://github.com/Nishanth-Kunchala" target="_blank">https://github.com/Nishanth-Kunchala</a>) and aerospace knowledge to innovate solutions for next-generation space missions.
         </p>
       </div>
       <div className="secondary">
