@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <p>&copy; 2025 Nishanth Kunchala</p>
+      <p>&copy; 2026 Nishanth Kunchala</p>
     </footer>
   );
 }
