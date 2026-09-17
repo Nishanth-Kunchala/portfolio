@@ -15,8 +15,8 @@ export default function Home() {
       <div className="intro">
       <h1 style={{ margin: '0 0 8px 0' }}>Hi, I’m Nishanth Kunchala!</h1>
         <p>
-        I’m a rising senior pursuing a Bachelor’s degree of science in Aerospace Engineering at The Ohio State University. 
-        Passionate about space systems and embedded software, I have hands-on experience in avionics design, AI-driven vision systems, and robotics integration. 
+        I’m a recent graduate of The Ohio State University with a Bachelor’s degree of science in Aerospace Engineering.
+        Passionate about space systems and embedded software, I have hands-on experience in CFD analysis, CAD design, avionics, and AI-driven vision systems, honed through rapid iterative prototyping across robotics integration and flight hardware projects.
         My technical journey includes projects ranging from machine learning model development to flight hardware prototyping, with a focus on real-world aerospace applications.
         </p>
         <p style={{ margin: '0 0 0 0' }}>

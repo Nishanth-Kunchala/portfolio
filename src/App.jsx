@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Projects from './pages/Portfolio';
 import Resume from './pages/Resume';
+import Publications from './pages/Publications';
 import Contact from './pages/Contact';
 
 function AnimatedRoutes() {
@@ -37,6 +38,14 @@ function AnimatedRoutes() {
           element={
             <PageFade>
               <Resume />
+            </PageFade>
+          }
+        />
+        <Route
+          path="/publications"
+          element={
+            <PageFade>
+              <Publications />
             </PageFade>
           }
         />
