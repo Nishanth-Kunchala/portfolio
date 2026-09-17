@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import './portfolio.css';
 import couplerCAD from '../assets/coupler_cad.png';
 import stewartPlatform from '../assets/Stewart_Platform_CAD.png';
@@ -154,30 +154,161 @@ export default function Projects() {
 
   const selectedProject = selectedIndex !== null ? projects[selectedIndex] : null;
 
+  // Triple the project list so the track can loop infinitely in either direction.
+  const loopedProjects = [...projects, ...projects, ...projects];
+
+  const trackRef = useRef(null);
+  const setWidthRef = useRef(0);
+  const pausedUntilRef = useRef(0); // timestamp (ms) until which idle auto-scroll is suppressed
+  const lastFrameTimeRef = useRef(null);
+  const scrollAccumRef = useRef(0); // fractional sub-pixel carry, since scrollLeft only stores whole pixels
+
+  const AUTO_SCROLL_SPEED = 30; // px per second while idle
+  const RESUME_DELAY = 5000; // ms to wait after an interaction before auto-scroll resumes
+
+  const pauseAutoScroll = (duration = RESUME_DELAY) => {
+    pausedUntilRef.current = Date.now() + duration;
+  };
+
+  const calibrate = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const setWidth = el.scrollWidth / 3;
+    setWidthRef.current = setWidth;
+    // Start scrolled into the middle copy so users can scroll either direction immediately.
+    if (el.scrollLeft < setWidth * 0.5 || el.scrollLeft > setWidth * 1.5) {
+      el.scrollLeft = setWidth;
+    }
+  };
+
+  useLayoutEffect(() => {
+    calibrate();
+    window.addEventListener('resize', calibrate);
+    return () => window.removeEventListener('resize', calibrate);
+  }, []);
+
+  const handleTrackScroll = () => {
+    const el = trackRef.current;
+    const setWidth = setWidthRef.current;
+    if (!el || !setWidth) return;
+    if (el.scrollLeft < setWidth * 0.5) {
+      el.scrollLeft += setWidth;
+    } else if (el.scrollLeft > setWidth * 1.5) {
+      el.scrollLeft -= setWidth;
+    }
+  };
+
+  // Slow, self-playing scroll that runs whenever the user hasn't interacted recently.
+  useEffect(() => {
+    let rafId;
+    const step = (timestamp) => {
+      if (lastFrameTimeRef.current === null) lastFrameTimeRef.current = timestamp;
+      const dt = Math.min(timestamp - lastFrameTimeRef.current, 50);
+      lastFrameTimeRef.current = timestamp;
+
+      const el = trackRef.current;
+      if (el && Date.now() >= pausedUntilRef.current) {
+        scrollAccumRef.current += AUTO_SCROLL_SPEED * (dt / 1000);
+        const wholePixels = Math.floor(scrollAccumRef.current);
+        if (wholePixels > 0) {
+          el.scrollLeft += wholePixels;
+          scrollAccumRef.current -= wholePixels;
+        }
+      } else {
+        scrollAccumRef.current = 0;
+      }
+      rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  // Convert vertical wheel/trackpad scrolling into horizontal carousel movement.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const handleWheel = (e) => {
+      const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      el.scrollLeft += delta;
+      pauseAutoScroll();
+      e.preventDefault();
+    };
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  const handleTouchStart = () => {
+    // Hold off auto-scroll for as long as the finger is on the track.
+    pausedUntilRef.current = Infinity;
+  };
+
+  const handleTouchEnd = () => {
+    pauseAutoScroll();
+  };
+
+  // Snaps to the nearest card and moves one card over, then pauses auto-scroll briefly.
+  const scrollToRelativeCard = (direction) => {
+    const el = trackRef.current;
+    const card = el && el.querySelector('.project-card');
+    if (!el || !card) return;
+    const gap = parseFloat(window.getComputedStyle(el).columnGap || '0') || 0;
+    const cardWidth = card.getBoundingClientRect().width + gap;
+    const nearestIndex = Math.round(el.scrollLeft / cardWidth);
+    el.scrollTo({ left: (nearestIndex + direction) * cardWidth, behavior: 'smooth' });
+    pauseAutoScroll();
+  };
+
   return (
     <section>
       <h2>Projects and Experience</h2>
       <p1>Click each card to learn more</p1>
 
-      {/* Grid layout */}
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="project-card"
-            onClick={() => openModal(index)}
-          >
-            {/* Thumbnail image */}
-            {project.media && project.media.length > 0 && (
-              <img
-                src={project.media[0].src}
-                alt={project.title}
-                className="card-thumbnail"
-              />
-            )}
-            <h3>{project.title}</h3>
-          </div>
-        ))}
+      {/* Infinite horizontal carousel */}
+      <div className="projects-carousel-wrapper">
+        <button
+          type="button"
+          className="carousel-arrow carousel-arrow-left"
+          aria-label="Scroll projects left"
+          onClick={() => scrollToRelativeCard(-1)}
+        >
+          ‹
+        </button>
+
+        <div
+          className="projects-grid"
+          ref={trackRef}
+          onScroll={handleTrackScroll}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+        >
+          {loopedProjects.map((project, index) => (
+            <div
+              key={index}
+              className="project-card"
+              onClick={() => openModal(index % projects.length)}
+            >
+              {/* Thumbnail image */}
+              {project.media && project.media.length > 0 && (
+                <img
+                  src={project.media[0].src}
+                  alt={project.title}
+                  className="card-thumbnail"
+                />
+              )}
+              <h3>{project.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="carousel-arrow carousel-arrow-right"
+          aria-label="Scroll projects right"
+          onClick={() => scrollToRelativeCard(1)}
+        >
+          ›
+        </button>
       </div>
 
       {/* Modal */}

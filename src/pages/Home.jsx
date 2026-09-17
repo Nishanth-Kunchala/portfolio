@@ -58,9 +58,10 @@ export default function Home() {
         style={{
           width: '100%',
           // 🔑 Forces the video to fill the 500px container
-          height: '100%', 
+          height: '100%',
           display: 'block',
-          borderRadius: '8px',
+          borderRadius: '14px',
+          boxShadow: 'var(--shadow-md)',
           objectFit: 'cover',
         }}
       />
@@ -85,8 +86,9 @@ export default function Home() {
         style={{
           width: '100%',
           // 🔑 Fills the 500px height of the parent
-          height: '100%',     
-          borderRadius: '8px',
+          height: '100%',
+          borderRadius: '14px',
+          boxShadow: 'var(--shadow-md)',
           objectFit: 'cover',
         }}
       />
@@ -111,9 +113,10 @@ export default function Home() {
         style={{
           width: '100%',
           // 🔑 Forces the video to fill the 500px container
-          height: '100%', 
+          height: '100%',
           display: 'block',
-          borderRadius: '8px',
+          borderRadius: '14px',
+          boxShadow: 'var(--shadow-md)',
           objectFit: 'cover',
         }}
       />

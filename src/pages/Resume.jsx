@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import resumePDF from '../assets/resume.pdf';
+import resumePDF from '../assets/Master_CV.pdf';
 
 // Define the mobile break point (should match your CSS media queries)
 const MOBILE_BREAKPOINT = 768; // 768px is a standard break for tablets/desktop
@@ -39,8 +39,8 @@ export default function Resume() {
         target="_blank" 
         rel="noopener noreferrer" 
         className="download-button"
-        style={{ 
-            backgroundColor: '#0077cc', 
+        style={{
+            background: 'linear-gradient(135deg, #0077cc 0%, #00a3ff 100%)',
             padding: '12px 24px'
         }}
       >
@@ -50,8 +50,8 @@ export default function Resume() {
         href={resumePDF}
         download
         className="download-button"
-        style={{ 
-            backgroundColor: '#001f3f', 
+        style={{
+            background: 'var(--gradient-primary)',
             padding: '12px 24px'
         }}
       >

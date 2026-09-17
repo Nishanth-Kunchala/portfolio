@@ -1,5 +1,15 @@
 /* App.css */
 
+:root {
+  --navy: #001f3f;
+  --navy-light: #003366;
+  --accent: #0077cc;
+  --gradient-primary: linear-gradient(135deg, #001f3f 0%, #004a8f 100%);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.07);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.14);
+}
+
 /* 1. Global Reset: Eliminate default body margin/padding */
 body {
   margin: 0;
@@ -117,10 +127,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #222;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  background-attachment: fixed;
+  color: #29323c;
   padding: 0;
   margin: 0;
 }
@@ -135,17 +146,22 @@ main {
 }
 
 header {
-  background: #001f3f;
+  background: var(--gradient-primary);
   color: white;
   padding: 10px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
 }
 
 header h1 {
   font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 section {
@@ -154,8 +170,20 @@ section {
 
 section h2 {
   font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   margin-bottom: 10px;
-  color: #001f3f;
+  color: var(--navy);
+}
+
+section h2::after {
+  content: '';
+  display: block;
+  width: 46px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 4px;
+  background: var(--gradient-primary);
 }
 
 nav ul {
@@ -167,21 +195,23 @@ nav ul {
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   padding: 10px 20px;
-  border-radius: 10px;
-  transition: background 0.3s ease;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
 }
 
 footer {
-  background: #002244;
+  background: linear-gradient(135deg, #001a33 0%, #00284d 100%);
   color: white;
   text-align: center;
   padding: 5px 20px;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
 }
 
 html {
@@ -283,17 +313,20 @@ html {
 }
 
 .download-button {
-  background-color: #0077cc;
+  background: var(--gradient-primary);
   color: white;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .download-button:hover {
-  background-color: #005fa3;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .pdf-scroll-container {
@@ -321,19 +354,26 @@ html {
   height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
-.intro h1 {
+.banner {
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero h1 {
   font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   margin-bottom: 10px;
-  color: #001f3f;
+  color: var(--navy);
 }
 
-.intro p {
+.hero p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #444;
+  color: #445064;
 }
 
 .carousel-wrapper {
