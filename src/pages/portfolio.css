@@ -284,21 +284,25 @@
 /* === Mobile Carousel Responsiveness === */
 @media (max-width: 768px) {
     .projects-carousel-wrapper {
-        gap: 8px;
-        padding: 0 8px;
+        gap: 6px;
+        padding: 0 4px;
     }
 
+    /* Sized so a full card (plus a peek of the next one) always fits within
+       the viewport, after subtracting main's padding, the wrapper's own
+       padding/gaps/arrows, and the track's inner padding. */
     .project-card {
-        width: 78vw;
+        width: calc(100vw - 140px);
+        padding: 14px;
     }
 
     .card-thumbnail {
-        height: 160px;
+        height: 150px;
     }
 
     .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
+        width: 30px;
+        height: 30px;
+        font-size: 1.1rem;
     }
 }
